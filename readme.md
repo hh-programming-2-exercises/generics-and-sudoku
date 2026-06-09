@@ -1,97 +1,92 @@
-> [!NOTE]  
-> The English translation for this exercise can be found in [this file](./readme.en.md).
+# Generic types and Sudoku game
 
-# Geneeriset tyypit ja Sudoku-peli
+With this bonus assignment, you will learn to define generic methods and classes. The topic is initially covered by creating general-purpose methods that can handle different types of data without having to repeat the program logic for different types. The assignment progress to implementing your own two-dimensional collection ([Grid](./src/main/java/grid/Grid.java)). Your own two-dimensional collection will eventually be used as the data structure for a Sudoku game.
 
-Tämän harjoitustehtäväpaketin myötä opit määrittelemään geneerisiä metodeita sekä luokkia. Aihetta käsitellään aluksi luomalla yleiskäyttöisiä metodeita, joiden avulla voidaan käsitellä eri tyyppistä dataa ilman, että ohjelmalogiikkaa joudutaan toistamaan eri tyyppejä varten. Tehtävät etenevät oman kaksiulotteisen kokoelman ([Grid](./src/main/java/grid/Grid.java)) toteuttamiseen. Omaa kaksiulotteista kokoelmaa hyödynnetään lopulta Sudoku-pelin tietorakenteena.
+To get acquainted with the topic, we recommend reading, for example, the [dev.java tutorial on Generics](https://dev.java/learn/generics/). Additionally, the video[ Generics In Java - Full Simple Tutorial (Coding with John, YouTube)](https://youtu.be/K1iu1kXkVoA) is a good resource to get started.
 
-Aiheeseen perehtymiseksi suosittelemme esimerkiksi [dev.java-tutoriaalin](https://dev.java/learn/generics/) lukua [Generics](https://dev.java/learn/generics/). Lisäksi video [Generics In Java - Full Simple Tutorial (Coding with John, YouTube)](https://youtu.be/K1iu1kXkVoA) on hyvä lähde liikkeelle pääsemiseksi.
+The assignment consists of several parts, which are evaluated separately using pre-written tests.
 
-Tehtävä koostuu useammasta osasta, jotka arvioidaan erikseen hyödyntäen valmiiksi kirjoitettuja testejä.
+## Starting the assignment
 
-
-## Tehtävän aloittaminen
-
-Aloita kloonaamalla Git-repositorio omalle koneellesi. Harjoitus täytyy tehdä omassa kopiossasi, eli varmista, että repositorion osoitteessa on mukana oma GitHub-käyttäjätunnuksesi! Oman kopiosi saat luotua kurssitoteutuksesi tehtävänannon GitHub classroom -linkin kautta.
+Once you have created your own repository from the assignment's template repository, clone your Git repository to your own computer using the `git clone` command. The assignment must be done in your own copy, so **make sure that your GitHub username is included in the repository address!**
 
 ```sh
-git clone https://github.com/varmista-etta-github-tunnuksesi-on-repositorion-osoitteessa.git
+git clone https://github.com/YOUR_GITHUB_USERNAME/programming-2-generics-and-sudoku.git
 ```
 
-Kloonattuasi projektin omalle koneellesi, avaa se koodieditorissasi.
+Once you have cloned the repository, open it in your code editor.
 
+## Submitting solutions
 
-## Vastausten lähettäminen
+> [!IMPORTANT]
+> This exercise is optional and the points won't affect the assessment. However, you can see the points to check the correctness of your solution.
 
-Kun olet saanut osan tai kaikki tehtävistä ratkaistua ja commitoinut vastauksesi, lähetä ratkaisut arvioitavaksi `git push`-komennolla. Git push käynnistää automaattisesti GitHub actions -workflow:n, joka kääntää sekä testaa ratkaisusi ja antaa jokaisesta testistä joko hyväksytyn tai hylätyn tuloksen.
+Once you have solved some or all of the exercises and committed your answers, submit the solutions for evaluation using the `git push` command. Git push will automatically trigger a GitHub Actions workflow that compiles and tests your solutions, providing a pass or fail result for each test.
 
-Kun GitHub Actions on saanut koodisi suoritettua, näet tuloksen GitHub-repositoriosi [Actions-välilehdellä](../../actions/workflows/classroom.yml). Arvioinnin valmistumiseen menee tyypillisesti pari minuuttia.
+Once the GitHub Actions has executed your code, you see the results in your GitHub repository's ["Actions" tab](../../actions/workflows/grading.yml). It usually takes a few minutes for the assesment to be completed. 
 
-Klikkaamalla yllä olevan linkin takaa viimeisintä *"GitHub Classroom Workflow"* -suoritusta, saat tarkemmat tiedot tehtävän arvioinnista. Sivun alaosassa näkyy saamasi pisteet. Klikkaamalla "Autograding"-otsikkoa pääset katsomaan tarkemmin arvioinnissa suoritetut vaiheet ja niiden tulokset. Kuvitetun ohjeen aiheesta löydät GitHubin dokumentista [View autograding results (github.com)](https://docs.github.com/en/education/manage-coursework-with-github-classroom/learn-with-github-classroom/view-autograding-results).
+By clicking on the latest *"Grading"* execution from the link above, you will get detailed information about the exercise evaluation. The red cross symbol ❌ on the execution indicates that you don't have the full points yet, whereas the green checkmark ✅ indicates you have the full points. The "Grading summary" section contains your total points and a breakdown of points from each part.
 
+## Exercise 1: Randomizer.java *(basics, 25%)*
 
-## Tehtävä 1: [Randomizer.java](./src/main/java/randomizer/Randomizer.java) *(perusteet, 25 %)*
+In the first phase of the exercise, the goal is to implement your own methods that allow you to fetch a random value from a list, shuffle the list into a random order, or take a certain number of random values from the list. Similar randomness could be utilized, for example, in a web application where a few random sales listings are picked for the front page. Various games, such as card games, also often involve similar randomness.
 
-Tehtävän ensimmäisessä vaiheessa tarkoituksena on toteuttaa omia metodeita, joiden avulla voit hakea listalta satunnaisen arvon, sekoittaa listan satunnaiseen järjestykseen tai ottaa listasta tietyn määrän satunnaisia arvoja. Vastaavaa satunnaisuutta voitaisiin hyödyntää esimerkiksi web-sovelluksessa, jossa etusivulle poimitaan muutamia satunnaisia myynti-ilmoituksia. Myös erilaisiin peleihin, kuten korttiepeleihin, liittyy usein vastaavaa satunnaisuutta.
+The [Randomizer](./src/main/java/randomizer/Randomizer.java) class to be coded in the exercise consists of predefined methods whose javadoc comments explain how the method should work. Your exercise is to read the comments and implement the method content to match the method name and description.
 
-Tehtävässä koodattava [Randomizer-luokka](./src/main/java/randomizer/Randomizer.java) koostuu valmiista metodeista, joiden javadoc-kommentit kertovat, miten metodin tulisi toimia. Sinun tehtäväsi on lukea kommentit ja toteuttaa metodin sisältö vastaamaan metodin nimeä sekä kuvausta.
-
-Voit testata koodiasi esimerkiksi oman `main`-metodin avulla, tai voit hyödyntää tehtävän valmiita JUnit-yksikkötestejä, jotka löytyvät [RandomizerTest-luokasta](./src/test/java/randomizer/RandomizerTest.java). Voit suorittaa testit koodieditorisi testaustyökalulla ([VS Code](https://code.visualstudio.com/docs/java/java-testing), [Eclipse](https://www.vogella.com/tutorials/JUnitEclipse/article.html)) tai [Gradle-automaatiotyökalulla](https://docs.gradle.org/current/userguide/java_testing.html):
+You can test your code using your own `main` method, or you can use the provided JUnit unit tests for the exercise, which can be found in the RandomizerTest class. You can run the tests using your code editor's testing tool ([VS Code](https://code.visualstudio.com/docs/java/java-testing), [Eclipse](https://www.vogella.com/tutorials/JUnitEclipse/article.html)) or the [Gradle automation tool](https://docs.gradle.org/current/userguide/java_testing.html):
 
 ```
 ./gradlew test --tests RandomizerTest        # unix
 .\gradlew.bat test --tests RandomizerTest    # windows
 ```
 
-💡 *Vinkki: kiinnitä huomiota metodien samankaltaisuuteen: voisitko kenties kutsua metodeista muita saman luokan metodeita?*
+> [!TIP]
+> Pay attention to the similarity of the methods: could you perhaps call other methods of the same class from these methods?
 
+## Exercise 2: "Generic randomizer" *(applying, 25%)*
 
-## Tehtävä 2: ["Generic randomizer"](./src/main/java/randomizer/Randomizer.java) *(soveltaminen, 25 %)*
+In the second part of the task, you will continue developing the [Randomizer](./src/main/java/randomizer/Randomizer.java) class so that all the class methods become **generic**. With generic methods, you can use, for example, the method that fetches a random value with strings, numbers, and your own classes.
 
-Tehtävän toisessa osassa jatkat [Randomizer-luokan](./src/main/java/randomizer/Randomizer.java) kehittämistä siten, että kaikista luokan metodeista tehdään **geneerisiä**. Geneeristen metodien avulla voit hyödyntää esimerkiksi satunnaisen arvon hakevaa metodia niin merkkijonojen, numeroiden kuin omien luokkiesi yhteydessä.
+In this part of the task, you may not need to change much of the content of the methods you have implemented. Instead, the changes mainly focus on the method headers, where a `Type` type variable is used instead of a concrete `String` type. If you haven't yet familiarized yourself with generic types through the [dev.java tutorial](https://dev.java/learn/generics/) or the [Coding with John-videon](https://youtu.be/K1iu1kXkVoA), you should start with those.
 
-Tehtävän tässä osassa sinun ei välttämättä tarvitse juurikaan muuttaa toteuttamiesi metodien sisältöä, vaan muutokset kohdistuvat pääasiassa metodien otsikoihin, joissa konkreettisen `String`-tyypin sijasta käytetään `Type`-tyyppimuuttujaa. Jos et vielä perehtynyt geneerisiin tyyppeihin [dev.java-tutoriaalin](https://dev.java/learn/generics/) tai [Coding with John-videon](https://youtu.be/K1iu1kXkVoA) avulla, sinun kannattaa aloittaa niistä.
+### Testing the changes
 
+In this task, the changes made to the [Randomizer](./src/main/java/randomizer/Randomizer.java) class must not break existing functionality. The tests performed in the previous part with the [Ran(./src/test/java/randomizer/RandomizerTest.java)domizerTest] class should still pass.
 
-### Muutosten testaaminen
-
-Tässä tehtävässä [Randomizer-luokkaan](./src/main/java/randomizer/Randomizer.java) tehtävät muutokset eivät saa rikkoa olemassa olevaa toiminnallisuutta. Edellisessä osassa suoritettujen [RandomizerTest-luokan](./src/test/java/randomizer/RandomizerTest.java) testien tulisi siis edelleen mennä läpi.
-
-Metodien otsikoihin tehtävien muutosten testaaminen aiheuttaa tehtävää aloitettaessa käännösvirheitä, koska tarvittavia muutoksia ei ole vielä tehty testiluokassa kutsuttaviin metodeihin. Testiluokka on siksi sijoitettu projektissa lähdekooditiedostojen ulkopuolelle. Sinun tuleekin siirtää tehtävän tarkastuksessa käytettävä `GenericRandomizerTest`-testiluokka oikeaan hakemistoon tehtävää aloittaessasi. Tämä voidaan tehdä `git mv`-komennolla, joka päivittää tiedon tiedoston siirrosta samalla myös versionhallintaan:
+Testing the changes made to the method headers will cause compilation errors at the start of the task because the necessary changes have not yet been made to the methods called in the test class. Therefore, the test class is placed outside the source code files in the project. You need to move the `GenericRandomizerTest` test class used for task inspection to the correct directory when starting the task. This can be done with the `git mv` command, which also updates the information about the file move in version control:
 
 ```
-# suorita seuraava komento projektin juurihakemistossa:
+# execute the following command in the root folder of the project:
 git mv GenericRandomizerTest.txt src/test/java/randomizer/GenericRandomizerTest.java
 ```
 
-Kun olet kopioinut testiluokan paikoilleen [src/test/java/randomizer/](./src/test/java/randomizer/)-hakemistoon yllä olevalla komennolla, voit suorittaa testit seuraavasti:
+Once you have copied the test class to the [src/test/java/randomizer/](./src/test/java/randomizer/) directory using the above command, you can run the tests as follows:
 
 ```
 ./gradlew test --tests GenericRandomizerTest        # unix
 .\gradlew.bat test --tests GenericRandomizerTest    # windows
 ```
 
+## Exercise 3: Grid.java *(applying, 25%)*
 
-## Tehtävä 3: [Grid.java](./src/main/java/grid/Grid.java) *(soveltaminen, 25 %)*
+The [Grid](./src/main/java/grid/Grid.java) class to be implemented in this task represents a **two-dimensional** grid. The grid can be used to model a game board such as a chessboard, tic-tac-toe, or sudoku grid. The Grid is intended to be implemented as a **generic** (`Grid<Type>`), so the contents of the grid can be, for example, numbers (`Grid<Integer>`), strings (`Grid<String>`), or other objects (`Grid<ChessPiece>`) depending on its use. However, all values in a single Grid object are always of the same type.
 
-Tässä tehtävässä toteutettava [Grid-luokka](./src/main/java/grid/Grid.java) edustaa **kaksiulotteista** ruudukkoa. Ruudukkoa voi käyttää esimerkiksi pelilaudan kuten shakkilaudan, ristinollan tai sudoku-ruudukon mallintamiseen. Grid on tarkoitus toteuttaa **geneerisenä** (`Grid<Type>`), jolloin ruudukon sisältönä voi olla tilanteesta riippuen esimerkiksi numeroita (`Grid<Integer>`), merkkijonoja (`Grid<String>`) tai muita olioita (`Grid<ChessPiece>`) riippuen sen käyttötarkoituksesta. Yhden Grid-olion kaikki arvot ovat kuitenkin aina keskenään samaa tyyppiä.
+Familiarize yourself with the [Grid](./src/main/java/grid/Grid.java) class javadoc comments and implement the logic for storing and retrieving data in the class. The data is intended to be stored and retrieved in much the same way as with arrays, lists, and map data structures. This time, the "key" consists of two values: the row and column numbers. Additionally, the size of the grid must grow dynamically, and new values must be able to be added in any order.
 
-Tutustu [Grid-luokan](./src/main/java/grid/Grid.java) javadoc-kommentteihin ja toteuta luokkaan logiikka tiedon tallentamiseksi sekä sen hakemiseksi. Tietoa on tarkoitus tallentaa ja hakea melko samalla tavalla kuin taulukkojen, listojen ja map-tietorakenteen kanssa. Tällä kertaa "avain" vain muodostuu kahdesta arvosta: rivin sekä sarakkeen numeroista. Lisähaasteena ruudukon koon on kasvettava dynaamisesti ja siihen pitää voida lisätä uusia arvoja missä tahansa järjestyksessä.
-
-Luokan JUnit-testit löytyvät [GridTest-luokasta](./src/test/java/grid/GridTest.java), jonka voit suorittaa esimerkiksi seuraavasti:
+The JUnit tests for the class can be found in the [GridTest](./src/test/java/grid/GridTest.java) class, which you can run as follows:
 
 ```
 ./gradlew test --tests GridTest        # unix
 .\gradlew.bat test --tests GridTest    # windows
 ```
 
-### 💡 Vinkit
+### 💡 Tips
 
-Joudut valitsemaan Grid-luokan sisällä tiedon tallentamisessa käytettävän tietorakenteen itse. Voit hyödyntää ongelman ratkaisemisessa esimerkiksi yksiulotteista tietorakennetta ja tallentaa listalle olioita, jotka koostuvat rivi- ja sarakenumeroista sekä varsinaisesta tallennettavasta arvosta.
+You will need to choose the data structure used for storing information within the Grid class yourself. You can solve the problem by using a one-dimensional data structure and storing objects in a list that consist of row and column numbers as well as the actual value to be stored.
 
-Toinen, tehokkaampi vaihtoehto voisi olla soveltaa Map-tietorakennetta siten, että yhdistät itse rivin ja sarakkeen merkkijonomuotoiseksi avaimeksi (`map.put("5:8", 7)`, `map.get("5:8")`).
+Another, more efficient option could be to use a Map data structure, combining the row and column into a string key (`map.put("5:8", 7)`, `map.get("5:8")`).
 
-Kolmas, edistyneempi lähestymistapa olisi luoda rivin ja sarakkeen tallentamiseksi uusi `Position`-luokka (`map.put(new Position(5, 8), 7)`). Jos `Position`-olioita käytetään hajautustaulun avaimina, on luokkaan toteutettava myös [hashCode-metodi](https://www.baeldung.com/java-hashcode), jota Java käyttää tiedon hajauttamisessa. `Position` kannattanee toisaalta toteuttaa [`record`-luokkana, koska Java muodostaa niille `hashCode`-metodin automaattisesti](https://docs.oracle.com/en/java/javase/17/language/records.html).
+A third, more advanced approach would be to create a new `Position` class to store the row and column (`map.put(new Position(5, 8), 7)`). If `Position` objects are used as keys in a hash table, the class must also implement the [hashCode](https://www.baeldung.com/java-hashcode) method, which Java uses for hashing data. On the other hand, it might be beneficial to implement `Position` as a [`record` class, since Java automatically generates the `hashCode` method for them](https://docs.oracle.com/en/java/javase/17/language/records.html).
 
 ```java
 /**
@@ -104,20 +99,19 @@ record Position(int row, int col) {
 }
 ```
 
+## Exercise 4: Sudoku.java *(applying, 25 %)*
 
-## Tehtävä 4: [Sudoku.java](./src/main/java/sudoku/Sudoku.java) *(soveltaminen, 25 %)*
-
-> *"Sudoku on logiikkapeli, jossa tehtävänä on täyttää neliönmuotoinen ruudukko merkeillä niin että jokaisella vaakarivillä ja pystyrivillä sekä jokaisessa osaneliössä käytetään samaa merkkiä tasan yhden kerran. Ruudukossa on aluksi valmiina jo muutama merkki. Yleisin sudoku on 9 × 9 -ruudukko, joka on jaettu yhdeksään 3 × 3 ruudun osaneliöön, ja merkkeinä käytetään numeroita 1–9"*
+> *"Sudoku is a logic-based, combinatorial number-placement puzzle. In classic Sudoku, the objective is to fill a 9 × 9 grid with digits so that each column, each row, and each of the nine 3 × 3 subgrids that compose the grid (also called "boxes", "blocks", or "regions") contains all of the digits from 1 to 9"*
 >
-> Wikipedia. https://fi.wikipedia.org/wiki/Sudoku
+> Wikipedia. https://en.wikipedia.org/wiki/Sudoku
 
-Tämä Sudoku-harjoitus toimii esimerkkinä siitä, miten voit erottaa pelilogiikan, tiedon tallennuksen ja käyttöliittymän erillisiksi luokiksi.
+This Sudoku exercise serves as an example of how you can separate game logic, data storage, and the user interface into distinct classes.
 
-Itse pelilogiikka toteutetaan [Sudoku-luokassa](./src/main/java/sudoku/Sudoku.java), jossa tarkastetaan että siirrot noudattavat pelin sääntöjä. [Grid-luokkaa](./src/main/java/grid/Grid.java) puolestaan käytetään numeroiden tallentamisessa kaksiulotteiselle pelilaudalle. Varsinainen pelin käyttöliittymä tulosteineen ja syötteineen on toteutettu erilliseen [SudokuGame-luokkaan](./src/main/java/sudoku/SudokuGame.java).
+The game logic itself is implemented in the [Sudoku](./src/main/java/sudoku/Sudoku.java) class, where it checks that the moves follow the game rules. The [Grid](./src/main/java/grid/Grid.java) class is used to store numbers on the two-dimensional game board. The actual game interface with outputs and inputs is implemented in a separate [SudokuGame](./src/main/java/sudoku/SudokuGame.java) class.
 
-Jakamalla sovelluksen logiikkaa eri luokkiin ja tekemällä niistä tarvittaessa geneerisiä koodi tulee modulaarisemmaksi ja helpommaksi ylläpitää ja testata. Myös koodin uudelleenkäyttö helpottuu, ja voisimme käyttää Grid-luokkaa sellaisenaan myös muihin peleihin, jotka hyödyntävät kaksiulotteista ruudukkoa. Sudoku-luokkaa voitaisiin puolestaan hyödyntää sellaisenaan erilaisten käyttöliittymien kanssa, esimerkiksi osana työpöytä- tai web-sovellusta.
+By dividing the application logic into different classes and making them generic if necessary, the code becomes more modular and easier to maintain and test. Code reuse is also facilitated, and we could use the Grid class as-is for other games that utilize a two-dimensional grid. The Sudoku class could, in turn, be used as-is with different interfaces, for example, as part of a desktop or web application.
 
-Peli on alkutilanteessa keskeneräinen, mutta voit silti käynnistää sen suorittamalla [SudokuGame-luokan main-metodin](./src/main/java/sudoku/SudokuGame.java). Kun etenet tehtävässä ja saat Sudoku-luokan metodeja toteutettua, lopputulos näyttää esimerkiksi seuraavalta:
+The game is initially incomplete, but you can still run it by executing the main method of the [SudokuGame](./src/main/java/sudoku/SudokuGame.java) class. As you progress in the task and implement the methods of the Sudoku class, the end result will look something like this:
 
 ```
 ███████╗██╗   ██╗██████╗  ██████╗ ██╗  ██╗██╗   ██╗
@@ -146,48 +140,46 @@ Enter the column (0-8): 1
 Enter the number (1-9): 8
 ```
 
-Tässä tehtävässä sinun tarvitsee tehdä muutoksia ainoastaan [Sudoku-luokassa](./src/main/java/sudoku/Sudoku.java) oleviin `setNumber`-, `getNumber`-, `isSolved`- sekä `toString`-metodeihin. Huomaa, että esimerkiksi `setNumber`-metodin edellyttämät tarkastukset rivien, sarakkeiden ja osaneliöiden suhteen voivat olla varsin monimutkaisia, ja ne kannattaa ehkä toteuttaa erillisiin itse suunnittelemiisi apumetodeihin.
+In this task, you only need to make changes to the `setNumber`, `getNumber`, `isSolved`, and `toString` methods in the [Sudoku](./src/main/java/sudoku/Sudoku.java) class. Note that the checks required by the `setNumber` method for rows, columns, and subgrids can be quite complex, and it might be a good idea to implement them in separate helper methods that you design yourself.
 
-Sudoku-luokan JUnit-testit löytyvät [SudokuTest-luokasta](./src/test/java/sudoku/SudokuTest.java) ja voit suorittaa ne esimerkiksi seuraavasti:
+The JUnit tests for the Sudoku class can be found in the [SudokuTest](./src/test/java/sudoku/SudokuTest.java) class, and you can run them as follows:
 
 ```
 ./gradlew test --tests SudokuTest        # unix
 .\gradlew.bat test --tests SudokuTest    # windows
 ```
 
-[SudokuGame-luokalle](./src/main/java/sudoku/SudokuGame.java) ei ole erillisiä yksikkötestejä, vaan voit testata sen toimivuuden suorittamalla koodia ja kokeilemalla eri arvojen sijoittamista eri ruutuihin.
+There are no separate unit tests for the [SudokuGame](./src/main/java/sudoku/SudokuGame.java) class, but you can test its functionality by running the code and trying to place different values in different cells.
 
+### Sudoku ❤ Programming MOOC
 
-### Sudoku ❤ Ohjelmoinnin MOOC
-
-Sudoku-tehtävässä on otettu vahvasti vaikutteita Helsingin yliopiston [Ohjelmoinnin perusteet -MOOC-kurssin](https://ohjelmointi-24.mooc.fi/) Python-kielisistä tehtävistä osoitteessa https://ohjelmointi-24.mooc.fi/osa-5. Sudoku-tehtävässä osittain täytetty Sudoku-ruudukko on myös lainattu saman MOOC-kurssin tehtävistä. [Ohjelmoinnin MOOC on lisensoitu CC BY-NC-SA 4.0 -lisenssillä](https://ohjelmointi-24.mooc.fi/credits):
-
-> *Kurssimateriaalin ja tehtävien tekijät ovat Erkki Kaila, Antti Laaksonen ja Matti Luukkainen. Muutama kurssin tehtävistä on Arto Hellaksen (né Vihavainen) käsialaa.*
->
-> *Kurssin materiaali on lisensoitu [Creative Commons BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/deed.fi) -lisenssillä, joten voit käyttää ja levittää sitä vapaasti, kunhan alkuperäisten tekijöiden nimiä ei poisteta. Jos teet muutoksia materiaaliin ja haluat levittää muunneltua versiota, se täytyy lisensoida samalla lisenssillä. Materiaalien käyttö kaupalliseen tarkoitukseen on ilman erillistä lupaa kielletty.*
-
+The Sudoku task is heavily influenced by the Python exercises from the University of Helsinki's [Introduction to Programming MOOC course](
+https://programming-24.mooc.fi/) at https://programming-24.mooc.fi/part-5. The partially filled Sudoku grid in the Sudoku task is also borrowed from the exercises of the same MOOC course. The Programming MOOC is licensed under the [CC BY-NC-SA 4.0 license](https://programming-24.mooc.fi/credits).
 
 ## Tehtävä 5: ohjelman paketoiminen suoritettavaksi [JAR-tiedostoksi](https://en.wikipedia.org/wiki/JAR_(file_format)) *(extra, 0 %)*
 
 Mikäli haluat luoda sudoku-sovelluksesta paketin, joka ei edellytä lähdekoodien ja IDE-työkalun käyttöä, voit tehdä sen projektissa mukana olevalla Gradle-työkalulla. `build`-komento paketoi sovelluksen .jar-tiedostoksi:
+
+## Task 5: Packaging the program into an executable [JAR file](https://en.wikipedia.org/wiki/JAR_(file_format)) *(extra, 0%)*
+
+If you want to create a package of the Sudoku application that does not require the use of source code and an IDE tool, you can do so with the Gradle tool included in the project. The `build` command packages the application into a .jar file:
 
 ```
 ./gradlew build         # unix
 .\gradlew.bat build     # windows
 ```
 
-Paketoitu tiedosto ilmestyy [build/libs/](./build/libs/) alihakemistoon, josta se voidaan suorittaa `java -jar`-komennolla:
+The packaged file will appear in the [build/libs/](./build/libs/) subdirectory, from where it can be executed with the `java -jar` command:
 
 ```
 java -jar build/libs/generics-and-sudoku.jar    # unix
 java -jar build\libs\generics-and-sudoku.jar    # windows
 ```
 
-Tarkempia ohjeita Gradlen käyttöön löydät esimerkiksi sivulta [Building Java Projects with Gradle (spring.io)](https://spring.io/guides/gs/gradle).
+For more detailed instructions on using Gradle, you can refer to [Building Java Projects with Gradle (spring.io)](https://spring.io/guides/gs/gradle).
 
-💡 *Tälle paketointitehtävälle ei ole erillisiä testejä, eikä se vaikuta arviointiin.*
+> [!IMPORTANT] There are no separate tests for this packaging task, and it does not affect the evaluation.
 
+## This exercise's license
 
-## Tämän tehtävän lisenssi
-
-Tämän tehtävän on kehittänyt Teemu Havulinna ja se on lisensoitu [Creative Commons BY-NC-SA](https://creativecommons.org/licenses/by-nc-sa/4.0/) -lisenssillä. Tehtävänannon, tehtäväpohjien ja automaattisten testien luonnissa on hyödynnetty ChatGPT 3.5 -kielimallia sekä GitHub Copilot -tekoälytyökalua.
+This task was developed by Teemu Havulinna and translated to English by Kalle Ilves and is licensed under the [Creative Commons BY-NC-SA](https://creativecommons.org/licenses/by-nc-sa/4.0/). The task description, task templates, and automatic tests were created using the ChatGPT 3.5 language model and the GitHub Copilot AI tool.
